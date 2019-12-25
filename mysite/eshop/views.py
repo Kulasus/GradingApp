@@ -1,11 +1,14 @@
 from django.http import HttpResponse
+from django.template import loader
 from .models import Product
 
 
 def index(request):
     newest_products_list = Product.objects.order_by('-created_at')[:10]
-    output = ', '.join([product.name for product in newest_products_list])
-    return HttpResponse(output)
+    template = loader.get_template('eshop/index.html')
+    context = {'newest_products_list' : newest_products_list}
+    
+    return HttpResponse(template.render(context,request))
     
 def categories(request):
     return HttpResponse("You are looking at all categories")
