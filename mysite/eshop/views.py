@@ -1,9 +1,12 @@
 from django.http import HttpResponse
+from .models import Product
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the eshop index.")
-
+    newest_products_list = Product.objects.order_by('-created_at')[:10]
+    output = ', '.join([product.name for product in newest_products_list])
+    return HttpResponse(output)
+    
 def categories(request):
     return HttpResponse("You are looking at all categories")
 
