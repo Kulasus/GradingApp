@@ -10,7 +10,7 @@ class Category(models.Model):
     description = models.CharField(max_length=100, null=True)
 
     def __str__(self):
-        return "Name: " + self.name
+        return self.name
 
 class Product(models.Model):
     '''Product module for db'''
@@ -21,7 +21,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, related_name="products", on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Name: " + self.name
+        return self.name
 
 class Review(models.Model):
     '''Review module for db'''
