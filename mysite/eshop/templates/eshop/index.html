@@ -1,7 +1,7 @@
 {% if newest_products_list %}
     <ul>
     {% for product in newest_products_list %}
-        <li><a href="/products/{{ product.id }}">{{ product.name }}</a></li>
+        <li><a href="{% url 'eshop:product_detail' product.id %}">{{ product.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

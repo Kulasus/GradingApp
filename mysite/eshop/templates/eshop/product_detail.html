@@ -1,6 +1,18 @@
 <h1>{{ product.name }}</h1>
 <ul>
+
     <li><strong>{{ product.category }}</strong></li>
     <li>{{ product.description }}</li>
     <li><strong>{{ product.price }} KČ</strong></li>
+</ul>
+<h2>Recenze:</h2>
+<ul>
+    {% for review in product.reviews.all %}
+        <li><strong>{{review.created_by}}</strong>
+            <ul>
+                <li>{{review.created_at}}</li>
+                <li>{{review.text}}</li>
+            </ul>
+        </li> 
+    {% endfor %}
 </ul>
