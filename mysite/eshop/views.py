@@ -1,7 +1,5 @@
 '''imports'''
-from django.http import HttpResponse, Http404
-from django.shortcuts import render
-
+from django.shortcuts import render, get_object_or_404
 from .models import Product, Category, Review
 
 
@@ -20,11 +18,8 @@ def categories(request):
 
 def category_detail(request, category_id):
     '''One exact category view'''
-    try:
-        category = Category.objects.get(id = category_id)
-    except Category.DoesNotExist:
-        raise Http404("Category does not exist")
-    return render(request, 'category/detail.html',{'category' : category})
+    category = get_object_or_404(Category, id=category_id)
+    return render(request, 'eshop/category_detail.html', {'category' : category})
 
 def products(request):
     '''All products view'''
@@ -32,16 +27,14 @@ def products(request):
     context = {'all_products_list' : all_products_list}
     return render(request, 'eshop/products.html', context)
 
-#todo
 def product_detail(request, product_id):
     '''One exact product view'''
-    response = "You are looking at product %s."
-    return HttpResponse(response % product_id)
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'eshop/product_detail.html', {'product':product})
 
 def reviews(request):
     '''All newest reviews view'''
     all_reviews_list = Review.objects.order_by('-created_at')[:5]
     context = {'all_reviews_list' : all_reviews_list}
     return render(request, 'eshop/reviews.html', context)
-
     
