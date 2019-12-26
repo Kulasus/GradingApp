@@ -1,0 +1,9 @@
+{% if all_reviews_list %}
+    <ul>
+    {% for review in all_reviews_list %}
+        <li>{{ review.text }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No new reviews.</p>
+{% endif %}
