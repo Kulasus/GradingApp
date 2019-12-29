@@ -4,6 +4,7 @@ from django.db import models
 class Teacher(models.Model):
     '''TEACHER model definition'''
     login = models.CharField(max_length=7, unique=True, null=False)
+    password = models.CharField(null=False)
     degree = models.CharField(max_length=100, null=True)
     name = models.CharField(max_length=25, null=False)
     surname = models.CharField(max_length=700, null=False)
@@ -27,6 +28,7 @@ class Subject(models.Model):
 class Student(models.Model):
     '''STUDENT model definition'''
     login = models.CharField(max_length=7, unique=True, null=False)
+    password = models.CharField(null=False)
     degree = models.CharField(max_length=100, null=True, blank=False)
     name = models.CharField(max_length=25, null=False)
     surname = models.CharField(max_length=700, null=False)
