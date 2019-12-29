@@ -4,14 +4,17 @@ from django.db import models
 class Teacher(models.Model):
     '''TEACHER model definition'''
     login = models.CharField(max_length=7, unique=True, null=False)
-    password = models.CharField(null=False)
+    password = models.TextField(default="password", null=False)
     degree = models.CharField(max_length=100, null=True)
     name = models.CharField(max_length=25, null=False)
     surname = models.CharField(max_length=700, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.login
+        return self.login + ', ' + self.name + ' ' + self.surname
+
+    def get_subjects(self):
+        return self.subjects.all()
 
 class Subject(models.Model):
     '''SUBJECT model definition'''
@@ -28,7 +31,7 @@ class Subject(models.Model):
 class Student(models.Model):
     '''STUDENT model definition'''
     login = models.CharField(max_length=7, unique=True, null=False)
-    password = models.CharField(null=False)
+    password = models.TextField(default="password", null=False)
     degree = models.CharField(max_length=100, null=True, blank=False)
     name = models.CharField(max_length=25, null=False)
     surname = models.CharField(max_length=700, null=False)
@@ -38,3 +41,6 @@ class Student(models.Model):
 
     def __str__(self):
         return self.login
+    
+    def get_subject_id(self):
+        return self.subject.id
