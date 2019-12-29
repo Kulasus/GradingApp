@@ -1,0 +1,7 @@
+{% if all_subject_list %}
+    {% for subject in all_subject_list %}
+        <a href="{% url 'grading:subject_details' subject.id %}">{{ subject.title }}</a><br>
+    {% endfor %}
+{% else %}
+    <p>No subjects are currently available.</p>
+{% endif %}

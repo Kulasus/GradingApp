@@ -2,7 +2,7 @@
 from django.urls import path
 from . import views
 
-app_name = 'eshop'
+app_name = 'grading'
 urlpatterns = [
     #mainviews
     path('', views.index, name='index'),
@@ -11,6 +11,6 @@ urlpatterns = [
     path('student/<int:student_id>', views.student, name="student"),
     path('teacher/<int:teacher_id>', views.teacher, name="teacher"),
     #logins
-    path('login/student/', views.student_login, name="student_login"),
-    path('login/teacher/', views.teacher_login, name="teacher_login")
+    path('student_login/', views.student_login, name="student_login"),
+    path('teacher_login/', views.teacher_login, name="teacher_login")
 ]

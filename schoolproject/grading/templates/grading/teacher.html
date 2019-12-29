@@ -1,0 +1,37 @@
+<style>
+    body{
+            font-family:Arial, Helvetica, sans-serif;
+            background-color:lightseagreen;
+        }
+    #main{
+            background-color:lightblue;
+            padding: 2%;
+            margin: 2%;
+        }
+    .done{
+            color:darkgreen;
+    }
+    .notdone{
+            color:maroon;
+    }
+    #strong_text_in_done_notdone{
+            color:black;
+    }
+</style>
+<body>
+    <div id=main>
+        <h1><u>{{ teacher.degree }} {{ teacher.name }} {{ teacher.surname }}, {{teacher.login}}</u></h1>
+        <div>
+            <p>
+                <strong>Momentálně vyučuje: </strong>
+                {% for subject in teacher.get_subjects %}
+                <a href="{% url 'grading:subject_details' subject.id %}">{{ subject }}</a> 
+                {% endfor %}
+            </p>    
+            <p>
+                <strong>Učitel vytvořen:</strong>
+                {{teacher.created_at}}
+            </p>
+        </div>    
+    </div>
+</body>
