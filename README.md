@@ -1,9 +1,5 @@
 # Django
 TODO: 
-1) Forms
-2) Add css to page
+1)Form for adding points for students
+2)Add css
 
-HIEARCHY:
-1)ADMIN
-2)USER
-3)UNKNOWN USER

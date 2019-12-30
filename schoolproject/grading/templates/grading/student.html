@@ -1,0 +1,44 @@
+<style>
+    body{
+            font-family:Arial, Helvetica, sans-serif;
+            background-color:lightseagreen;
+        }
+    #main{
+            background-color:lightblue;
+            padding: 2%;
+            margin: 2%;
+        }
+    .done{
+            color:darkgreen;
+    }
+    .notdone{
+            color:maroon;
+    }
+    #strong_text_in_done_notdone{
+            color:black;
+    }
+</style>
+<body>
+    <div id=main>
+        <h1><u>{{ student.name }} {{ student.surname }}, {{student.login}}</u></h1>
+        <div>
+            <p>
+                <strong>Momentálně studuje: </strong>
+                <a href="{% url 'grading:subject_details' student.subject.id %}">{{ student.subject }}</a> 
+            </p>    
+            {% if student.points >= student.subject.min_points%}
+            <p class="done"> 
+                <strong id="strong_text_in_done_notdone">Počet bodů: </strong>
+                {{student.points}}</p>
+            {% else %}
+            <p class="notdone"> 
+                <strong id="strong_text_in_done_notdone">Počet bodů: </strong>
+                {{student.points}}</p>
+            {% endif %}      
+            <p>
+                <strong>Student vytvořen:</strong>
+                {{student.created_at}}
+            </p>
+        </div>    
+    </div>
+</body>

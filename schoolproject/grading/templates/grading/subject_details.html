@@ -1,0 +1,31 @@
+<style>
+    body{
+            font-family:Arial, Helvetica, sans-serif;
+            background-color:lightseagreen;
+        }
+    #main{
+            background-color:lightblue;
+            padding: 2%;
+            margin: 2%;
+        }
+</style>
+<body>
+    <div id=main>
+        <h1><u>{{ subject.title }} ({{ subject.subject_code}})</u></h1>
+        <div>
+            <p>
+                <strong>Cíle předmětu:</strong><br>
+                {{subject.description}}<br>
+            </p>
+            <p> <strong>Minimální počet bodů:</strong>
+                {{subject.min_points}}<br>
+            </p>
+            <p> <strong>Učitel:</strong>
+                {{subject.teacher}}<br>
+            </p>
+            <p> <strong>Předmět vytvořen:</strong>
+                {{subject.created_at}}<br>
+            </p>
+        </div>    
+    </div>
+</body>

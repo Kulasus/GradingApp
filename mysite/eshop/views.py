@@ -38,4 +38,12 @@ def user_profile(request, user_id):
     '''User profile view'''
     user = get_object_or_404(User, id=user_id)
     return render(request, 'eshop/user_profile.html', {'user':user})
+
+def login(request):
+    '''Login view'''
+    return render(request, 'eshop/login')
+    
+def signup(request):
+    '''Singup view'''
+    return render(request, 'eshop/signup.html')
     
