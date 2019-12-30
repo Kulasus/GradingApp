@@ -1,7 +1,38 @@
-{% if all_subject_list %}
-    {% for subject in all_subject_list %}
-        <a href="{% url 'grading:subject_details' subject.id %}">{{ subject.title }}</a><br>
-    {% endfor %}
-{% else %}
-    <p>No subjects are currently available.</p>
-{% endif %}
+<style>
+    body{
+            font-family:Arial, Helvetica, sans-serif;
+            background-color:lightseagreen;
+        }
+    #main{
+            background-color:lightblue;
+            padding: 2%;
+            margin: 2%;
+        }
+    #item{
+            background-color: white;
+            padding: 2%;
+            border: lightblue;
+            border-style: solid;
+    }
+    a{
+            font-size: 150%;
+    }
+</style>
+<div id=main>
+    {% if all_subject_list %}
+    <ol>
+        {% for subject in all_subject_list %}
+        <div id=item>
+            <li>
+                <a href="{% url 'grading:subject_details' subject.id %}">{{ subject.title }}</a><br>
+                <strong>Učitel:</strong>{{subject.teacher}}
+            </li>
+        </div>
+        {% endfor %}
+    {% else %}
+        <li>
+            <p>No subjects are currently available.</p>
+        </li>>
+    {% endif %}
+    </ol>
+</div>
