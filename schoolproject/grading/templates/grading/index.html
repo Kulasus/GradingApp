@@ -1,35 +1,10 @@
-<style>
-    body{
-            font-family:Arial, Helvetica, sans-serif;
-            background-color:lightseagreen;
-        }
-    #main{
-            background-color:lightblue;
-            padding: 2%;
-            margin: 2%;
-        }
-    #heading{   
-            text-align: center;         
-            border-style: solid;
-            border-color: white;
-    }
-</style>
-<div id=main>
-    <div id=heading>
-        <h1>Welcome to SG system!</h1>
-    </div>
-    <div id=login>
-        <h2>Login:</h2>
-        <p>
-
-            <a href="{% url 'grading:student_login' %}">Student login</a><br>
-            <a href="{% url 'grading:teacher_login' %}">Teacher login</a>
-        </p>
-    </div>
-    <div id="subjects">
-        <h2>Supported subjects:</h2>
-        <p>
-            <a href="{% url 'grading:subject' %}">List of all subjects</a>
-        </p>   
-    </div>
-</div> 
+<h1>Welcome to CG system!</h1>
+<h2>Login:</h2>
+<p>
+    <a href="{% url 'grading:student_login' %}">I am student</a><br>
+    <a href="{% url 'grading:teacher_login' %}">I am teacher</a>
+</p>
+<h2>Supported subjects:</h2>
+<p>
+    <a href="{% url 'grading:subject' %}">List of all subjects</a>
+</p>    

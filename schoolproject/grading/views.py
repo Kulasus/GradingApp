@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from .models import Subject, Teacher, Student
-from .forms import TeacherLoginForm, StudentLoginForm
+from .forms import TeacherLoginForm, StudentLoginForm, AddPointsToStudentForm
 
 def index(request):
     '''home page view(index.html)'''
@@ -22,7 +22,15 @@ def student(request, student_id):
 
 def teacher(request, teacher_id):
     '''View on one specific teacher -> opens after teacher login'''
-    return render(request, 'grading/teacher.html', {'teacher' : get_object_or_404(Teacher, id=teacher_id)})
+    if request.method == 'POST':
+        form = AddPointsToStudentForm(request.POST)
+        if form.is_valid():
+            stud = get_object_or_404(Student, login=form.cleaned_data['login'])
+            new_points = stud.points + form.cleaned_data['points']
+            Student.objects.filter(id=stud.id).update(points=new_points)
+    else:
+        form = AddPointsToStudentForm()
+    return render(request, 'grading/teacher.html', {'teacher' : get_object_or_404(Teacher, id=teacher_id), 'form' : form})
 
 def student_login(request):
     '''Login page for students'''
